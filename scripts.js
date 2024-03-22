@@ -110,8 +110,7 @@
             if (file) {
                 let img = new Image();
                 img.onload = function () {
-                    console.log('Image dim: ' + this.width + 'x' + this.height);
-                    console.log(this.src);
+                    node.find('.node_img').attr('src', img.src);
                 }
                 img.src = URL.createObjectURL(file);
             }
