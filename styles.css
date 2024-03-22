@@ -1,0 +1,255 @@
+:root {
+    --primary-color: rgba(140, 160, 190, 1);
+    --secondary-color: rgba(125, 125, 190, 1);
+    --text-color: rgba(230, 230, 230, 1);
+    --line-color: rgba(255, 190, 160, 1);
+    --focus-color: rgba(255, 0, 125, 1);
+    --background-color: #333;
+    --node-size: 4vw;
+}
+
+
+div,
+ol,
+ul {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.fit-to-screen {
+    max-width: 100%;
+    height: auto;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: calc(var(--node-size) / 3);
+    overflow: hidden;
+    cursor: all-scroll;
+    cursor: -webkit-grab;
+    cursor: pointer;
+}
+
+body:active {
+    cursor: -webkit-grabbing;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    display: none;
+    background: #f6f6f6;
+    min-width: calc(var(--node-size)*4);
+    width: min-content;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    padding: 6px;
+    z-index: 3;
+}
+
+.dropdown {
+    position: absolute;
+    display: none;
+    font-size: 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.buttons button {
+    font-size: calc(var(--node-size)/3);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border-color: var(--secondary-color);
+    z-index: 2;
+    border-width: 1px;
+    transition: all 400ms ease-in-out;
+}
+
+.dropdown button:hover {
+    color: var(--secondary-color);
+}
+
+.editing_node {
+    display: none;
+    position: absolute;
+    background: var(--secondary-color);
+    border: 2px solid var(--line-color);
+    padding: 10px;
+    z-index: 3;
+}
+
+.mindmap {
+    position: absolute;
+    top: 1vw;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: calc(var(--node-size) / 2);
+    text-align: center;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.mindmap:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+}
+
+.node {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: var(--node-size);
+    width: calc(var(--node-size)*2.5);
+    margin: 0.25vw 0;
+    text-align: center;
+    line-height: var(--node-size);
+    border: 0.1vw solid var(--line-color);
+    background: var(--secondary-color);
+    border-radius: calc(var(--node-size)/5);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 2;
+}
+
+.node .description,
+.node .node_img {
+    display: none;
+}
+
+
+.node:hover {
+    border-width: 1.5px;
+
+}
+
+.node_root {
+    height: calc(var(--node-size) * 1.5);
+    width: calc(var(--node-size) * 2);
+    border: 0;
+    text-align: center;
+    line-height: calc(var(--node-size) * 1.5);
+    background: var(--primary-color);
+    font-size: 1.25em;
+}
+
+.children {
+    position: relative;
+    list-style: none;
+    text-align: left;
+    padding: 0 0 0 6px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.children:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    width: 10px;
+    border-top: 1px solid var(--line-color);
+}
+
+.children_item {
+    position: relative;
+    padding: 0 0 0 10px;
+    border-left: 1px solid var(--line-color);
+}
+
+.children_item:first-child,
+.children_item:last-child {
+    border-left: 1px solid transparent;
+}
+
+.children_item:before {
+    content: '';
+    width: 10px;
+    border-top: 1px solid var(--line-color);
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.children_item:first-child:before {
+    left: -1px;
+    bottom: 0;
+    border-radius: 4px 0 0 0;
+    border-left: 1px solid var(--line-color);
+}
+
+.children_item:last-child:before {
+    left: -1px;
+    top: 0;
+    bottom: 50%;
+    border-radius: 0 0 0 4px;
+    border: 0;
+    border-left: 1px solid var(--line-color);
+    border-bottom: 1px solid var(--line-color);
+}
+
+
+
+.children_item:first-child:last-child:before {
+    top: 50%;
+    bottom: auto;
+    border: 0;
+    border-radius: 0;
+    border-top: 1px solid var(--line-color);
+}
+
+.children .children .node {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0.15))) var(--secondary-color);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)) var(--secondary-color);
+}
+
+.children .children .children .node {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.30)), to(rgba(0, 0, 0, 0.30))) var(--secondary-color);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)) var(--secondary-color);
+}
+
+.children .children .children .children .node {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.45)), to(rgba(0, 0, 0, 0.45))) var(--secondary-color);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)) var(--secondary-color);
+}
+
+.children .children .children .children .children .node {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.60)), to(rgba(0, 0, 0, 0.60))) var(--secondary-color);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)) var(--secondary-color);
+}
