@@ -8,6 +8,7 @@ This repository contains an interactive mindmap. The mindmap allows users to add
 2. jQuery reference is already included in HTML file.
 3. Just open home.html and you are good to go.
 4. Use the provided buttons for deleting, adding, and editing nodes.
+5. Hover over nodes to see description and image.
 
 ## Dependencies
 
