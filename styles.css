@@ -23,11 +23,6 @@ ul {
     appearance: none;
 }
 
-.fit-to-screen {
-    max-width: 100%;
-    height: auto;
-}
-
 html {
     height: 100%;
     width: 100%;
@@ -57,14 +52,17 @@ body:active {
     position: absolute;
     display: none;
     background: #f6f6f6;
-    min-width: calc(var(--node-size)*4);
-    width: min-content;
-    color: black;
+    color: rgb(16, 9, 44);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     pointer-events: none;
-    padding: 6px;
+    padding: 2px;
     z-index: 3;
+}
+
+.tooltip img {
+    max-width: auto;
+    max-height: auto;
 }
 
 .dropdown {
@@ -76,7 +74,6 @@ body:active {
 .buttons {
     display: flex;
     flex-direction: column;
-    
 }
 
 .buttons button {
@@ -84,8 +81,9 @@ body:active {
     color: var(--text-color);
     background-color: var(--background-color);
     border-color: var(--secondary-color);
-    z-index: 2;
-    border-width: 1px;
+    z-index: 4;
+    border-width: 0.5px;
+    border-radius: calc(var(--node-size)/8);
     transition: all 400ms ease-in-out;
 }
 
@@ -99,7 +97,14 @@ body:active {
     background: var(--secondary-color);
     border: 2px solid var(--line-color);
     padding: 10px;
+    overflow: auto;
     z-index: 3;
+}
+
+.editing_node form {
+    width: 100%;
+    max-width: 80vh;
+    max-height: 80vh;
 }
 
 .mindmap {
