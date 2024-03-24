@@ -201,12 +201,13 @@
 
     <div class="editing_node">
         <form>
-            <label for="node-text">Node Text</label><br>
-            <input type="text" id="node-text"><br>
+            <!-- <label for="node-text">Title</label><br> -->
+            <input type="text" id="node-text" placeholder="Title"><br>
             <input type="file" id="image" accept="image/*">
-            <label for="image"></label>
-            <label for="describe"></label><br>
-            <textarea id="describe"></textarea><br>
+            <!-- <label for="image"></label> -->
+            <button type="button" class="clear">clear image</button>
+            <!-- <label for="describe">Describe:</label> -->
+            <textarea id="describe" placeholder="Describe"></textarea><br>
             <button type="submit">Save</button>
             <button type="button" class="cancel-button">Cancel</button>
         </form>
