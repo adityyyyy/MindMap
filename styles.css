@@ -49,8 +49,12 @@ body:active {
 }
 
 .tooltip {
-    position: absolute;
     display: none;
+}
+
+.tooltip {
+    position: absolute;
+    height: auto; 
     background: #f6f6f6;
     color: rgb(16, 9, 44);
     border-radius: 5px;
@@ -60,9 +64,8 @@ body:active {
     z-index: 3;
 }
 
-.tooltip img {
-    max-width: auto;
-    max-height: auto;
+.tooltip .node_img {
+    max-height: 50vh;
 }
 
 .dropdown {
@@ -95,17 +98,28 @@ body:active {
     display: none;
     position: absolute;
     background: var(--secondary-color);
+    border-radius: 5px;
     border: 2px solid var(--line-color);
-    padding: 10px;
+    margin: auto;
     overflow: auto;
     z-index: 3;
 }
 
 .editing_node form {
-    width: 100%;
     max-width: 80vh;
     max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    font-size: small;
 }
+
+.editing_node button{
+    width: max-content;
+    border: black;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    padding-bottom: 5px;
+}   
 
 .mindmap {
     position: absolute;
