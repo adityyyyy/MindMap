@@ -15,8 +15,6 @@
             const isNotWhitespaceString = str => !/\S/.test(str);
 
             if (!isNotWhitespaceString($('.tooltip .description').text()) || !isNotWhitespaceString($('.tooltip .node_img').attr('src'))) {
-
-
                 $('.tooltip').show();
             }
 
@@ -129,7 +127,11 @@
             $('#describe').val('');
         });
 
-
+        $('.clear').click(function(){
+            let node = $(this).data('node');
+            node.find('.node_img').attr('src', '');
+            $('.editing_node').hide();
+        });
 
         $('.mindmap').on('dblclick', '.node', function (event) {
 
@@ -138,6 +140,7 @@
             $('.delete_btn').data('node', $(this));
             $('.add_btn').data('node', $(this));
             $('.edit_btn').data('node', $(this));
+            $('.clear').data('node', $(this));
 
             $('.dropdown').css({ 'top': pos.top + $(this).height(), 'left': pos.left });
             $('.dropdown').slideToggle();
